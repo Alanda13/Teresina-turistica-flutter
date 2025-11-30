@@ -3,6 +3,7 @@
 Este projeto é o Trabalho Final da disciplina de Programação para Dispositivos Móveis, desenvolvido em Flutter seguindo a arquitetura MVC (Model-View-Controller). O objetivo é ser um guia interativo para turistas e moradores, apresentando pontos turísticos e restaurantes típicos de Teresina, Piauí.
 
 **Dupla:** Shara e Alanda
+
 **Professor:** Otilio Paulo
 
 ---
