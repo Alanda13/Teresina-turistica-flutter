@@ -13,9 +13,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Teresina Turística',
       theme: ThemeData(
-        primarySwatch: Colors.green, 
+        brightness: Brightness.light,
+        primarySwatch: Colors.green,
       ),
-      home: LoginView(), 
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.green,
+      ),
+      themeMode: ThemeMode.system, // ← usa o modo do sistema
+      home: LoginView(),
     );
   }
 }
