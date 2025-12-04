@@ -45,18 +45,11 @@ class _LoginViewState extends State<LoginView> {
               children: <Widget>[
                 const SizedBox(height: 30),
                 Image.asset(
-                  'assets/images/Logo-IFPI-Vertical.png',
+                  'assets/images/logo.png',
                   height: 200, 
                 ),
                 
-                const Text(
-                  'Teresina Turística',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green
-                  ),
-                ),
+                
                 // ESPAÇAMENTO REDUZIDO: De 40 para 20
                 const SizedBox(height: 20),
                 TextFormField(
