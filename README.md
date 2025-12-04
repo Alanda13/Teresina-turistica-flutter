@@ -13,13 +13,13 @@ Este projeto é o Trabalho Final da disciplina de Programação para Dispositivo
 O aplicativo oferece uma experiência completa de exploração e interação:
 
 ### 1. Sistema de Usuário e Autenticação
-* [cite_start]Tela de Login e Cadastro para novos usuários.
+* Tela de Login e Cadastro para novos usuários.
 * Configuração de Perfil.
 
 ### 2. Mapas Interativos e Localização
-* [cite_start]Utiliza a **API do Google Maps Flutter** [cite: 95] para exibir todos os pontos de interesse de Teresina.
+* Utiliza a **API do Google Maps Flutter** [cite: 95] para exibir todos os pontos de interesse de Teresina.
 * Pontos marcados no mapa com **ícones diferenciados** para distinguir entre Restaurantes e Pontos Turísticos.
-* [cite_start]Exibe a **localização atual** do usuário no mapa[cite: 73].
+* Exibe a **localização atual** do usuário no mapa[cite: 73].
 * Opção para **favoritar** pontos de interesse.
 
 ### 3. Interação e Conteúdo
@@ -34,10 +34,10 @@ O aplicativo oferece uma experiência completa de exploração e interação:
 ## 🏗️ Arquitetura e Tecnologia
 
 * **Framework:** Flutter (Dart)
-* [cite_start]**Arquitetura:** MVC (Model-View-Controller) [cite: 10]
+* **Arquitetura:** MVC (Model-View-Controller) [cite: 10]
 * **Gerenciamento de Estado:** [Provider / BlOC/Cubit - *Escolha o seu*]
-* [cite_start]**Armazenamento Local:** SQFlite (SQLite) para gerenciar dados de usuários, pontos, avaliações e sugestões[cite: 9].
-* [cite_start]**Geolocalização:** Google Maps Flutter [cite: 95] e Geolocator.
+* **Armazenamento Local:** SQFlite (SQLite) para gerenciar dados de usuários, pontos, avaliações e sugestões[cite: 9].
+* **Geolocalização:** Google Maps Flutter [cite: 95] e Geolocator.
 
 ---
 
