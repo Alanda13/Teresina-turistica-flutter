@@ -61,74 +61,75 @@ class HomeView extends StatelessWidget {
               ),
             ],
           ),
-          body: Padding(
+          // ✅ CORREÇÃO: TROCAR Padding + Column POR ListView
+          body: ListView(
             padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Olá, $userName!',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: primaryColor,
-                  ),
+            children: [
+              Text(
+                'Olá, $userName!',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: primaryColor,
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Pronto(a) para explorar o que Teresina tem de melhor?',
-                  style: TextStyle(fontSize: 18, color: Colors.grey),
-                ),
-                const SizedBox(height: 40),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Pronto(a) para explorar o que Teresina tem de melhor?',
+                style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
+              const SizedBox(height: 40),
 
-                // Botão Mapas
-                _MenuButton(
-                  title: 'Mapas de Teresina',
-                  subtitle: 'Pontos turísticos, restaurantes e sua localização.',
-                  icon: Icons.map,
-                  color: accentColor,
-                  onTap: () => _navigateToMaps(context),
-                ),
-                const SizedBox(height: 20),
+              // Botão Mapas
+              _MenuButton(
+                title: 'Mapas de Teresina',
+                subtitle: 'Pontos turísticos, restaurantes e sua localização.',
+                icon: Icons.map,
+                color: accentColor,
+                onTap: () => _navigateToMaps(context),
+              ),
+              const SizedBox(height: 20),
 
-                // Botão Lista de Locais
-                _MenuButton(
-                  title: 'Lista de Locais',
-                  subtitle: 'Veja todos os pontos turísticos de Teresina',
-                  icon: Icons.list_alt,
-                  color: Colors.teal,
-                  onTap: () => _navigateToListaLocais(context),
-                ),
-                const SizedBox(height: 20),
+              // Botão Lista de Locais
+              _MenuButton(
+                title: 'Lista de Locais',
+                subtitle: 'Veja todos os pontos turísticos de Teresina',
+                icon: Icons.list_alt,
+                color: Colors.teal,
+                onTap: () => _navigateToListaLocais(context),
+              ),
+              const SizedBox(height: 20),
 
-                // Botão Perfil
-                _MenuButton(
-                  title: 'Meu Perfil & Configurações',
-                  subtitle: 'Gerencie seus dados e status de usuário.',
-                  icon: Icons.person_outline,
-                  color: primaryColor.withOpacity(0.8),
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Em breve: Tela de Perfil')),
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
+              // Botão Perfil
+              _MenuButton(
+                title: 'Meu Perfil & Configurações',
+                subtitle: 'Gerencie seus dados e status de usuário.',
+                icon: Icons.person_outline,
+                color: primaryColor.withOpacity(0.8),
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Em breve: Tela de Perfil')),
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
 
-                // Botão Avaliações
-                _MenuButton(
-                  title: 'Avaliações e Sugestões',
-                  subtitle: 'Veja o que outros turistas dizem sobre os locais.',
-                  icon: Icons.reviews_outlined,
-                  color: Colors.blueGrey,
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Em breve: Tela de Avaliações')),
-                    );
-                  },
-                ),
-              ],
-            ),
+              // Botão Avaliações
+              _MenuButton(
+                title: 'Avaliações e Sugestões',
+                subtitle: 'Veja o que outros turistas dizem sobre os locais.',
+                icon: Icons.reviews_outlined,
+                color: Colors.blueGrey,
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Em breve: Tela de Avaliações')),
+                  );
+                },
+              ),
+              
+              // ✅ ADICIONAR: Espaço extra no final para evitar overflow
+              const SizedBox(height: 40),
+            ],
           ),
         );
       },
@@ -169,9 +170,15 @@ class _MenuButton extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text(
+                      title, 
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+                    ),
                     const SizedBox(height: 4),
-                    Text(subtitle, style: TextStyle(fontSize: 14, color: Colors.grey[600])),
+                    Text(
+                      subtitle, 
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600])
+                    ),
                   ],
                 ),
               ),

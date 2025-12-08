@@ -7,11 +7,7 @@ class MapsView extends StatefulWidget {
   final Local? localSelecionado;
   final List<Local>? todosLocais;
 
-  const MapsView({
-    super.key,
-    this.localSelecionado,
-    this.todosLocais,
-  });
+  const MapsView({super.key, this.localSelecionado, this.todosLocais});
 
   @override
   State<MapsView> createState() => _MapsViewState();
@@ -29,7 +25,10 @@ class _MapsViewState extends State<MapsView> {
     super.initState();
     // Define a posição inicial com base no local selecionado ou padrão (Teresina)
     _cameraPosition = widget.localSelecionado != null
-        ? LatLng(widget.localSelecionado!.latitude, widget.localSelecionado!.longitude)
+        ? LatLng(
+            widget.localSelecionado!.latitude,
+            widget.localSelecionado!.longitude,
+          )
         : const LatLng(-5.0892, -42.8016); // Localização padrão Teresina
 
     _carregarMarcadores();
@@ -52,10 +51,7 @@ class _MapsViewState extends State<MapsView> {
     final posicao = await Geolocator.getCurrentPosition();
 
     setState(() {
-      _cameraPosition = LatLng(
-        posicao.latitude,
-        posicao.longitude,
-      );
+      _cameraPosition = LatLng(posicao.latitude, posicao.longitude);
     });
     // Modificação 3: Remove a chamada _mapController?.animateCamera(...) daqui
   }
@@ -65,13 +61,26 @@ class _MapsViewState extends State<MapsView> {
     if (widget.todosLocais != null) {
       for (var local in widget.todosLocais!) {
         novosMarcadores.add(
+          // No método _carregarMarcadores
           Marker(
-            markerId: MarkerId(local.nome),
+            markerId: MarkerId(local.id),
             position: LatLng(local.latitude, local.longitude),
             infoWindow: InfoWindow(
               title: local.nome,
-              snippet: local.descricao,
+              snippet:
+                  '${local.categoria} • ⭐ ${local.notaMedia.toStringAsFixed(1)}',
             ),
+            icon: local.categoria == 'restaurante'
+                ? BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueOrange,
+                  )
+                : local.categoria == 'ponto_turistico'
+                ? BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueBlue,
+                  )
+                : BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueGreen,
+                  ),
           ),
         );
       }
@@ -115,7 +124,7 @@ class _MapsViewState extends State<MapsView> {
           } else {
             // Se um local foi selecionado, garante a centralização no local (que já foi
             // definido como _cameraPosition no initState)
-             _mapController?.animateCamera(
+            _mapController?.animateCamera(
               CameraUpdate.newLatLngZoom(_cameraPosition, 15),
             );
           }
